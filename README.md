@@ -7,3 +7,5 @@ Gentle(wo)men, let the journey begin. Best of luck!
 **On the horizon:**
 
 - Web UI for convenient interaction with some of the algorithms
+- Tests for all the algorithms
+- Continuous Integration! (Travis, most likely)
