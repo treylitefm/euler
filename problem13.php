@@ -1,18 +1,24 @@
 #!/usr/bin/php
 <?php
+/**
+ * https://projecteuler.net/problem=13
+ */
 
-set_error_handler("warning_handler", E_WARNING);
+$problem = `curl -s https://projecteuler.net/problem=13`;
+$matches = [];
 
-$list = new LinkedList(123142148210948);
-$list->printNum();
-echo PHP_EOL;
-$list->add(52);
-echo PHP_EOL;
-echo PHP_EOL;
-//$list->add(999);
-$list->printNum();
-echo PHP_EOL;
- 
+preg_match_all('/\d{50}/', $problem, $matches);
+
+//print_r($matches);
+
+$list = new LinkedList(0);
+
+foreach($matches[0] as $num) {
+	$list->add($num);
+}
+
+print substr($list->getNum(), 0, 10) . PHP_EOL;
+
 class LinkedList
 {
 	public $link;
@@ -53,37 +59,39 @@ class LinkedList
 		}
 	}
 
+	public function getNum($num = '')
+	{
+		if ($this->link === null) {
+			return $this->value;
+		} else {
+			return $this->link->getNum() . $this->value;
+		}
+	}
+
 	public function add($num) 
 	{
-		if (get_class($num) !== 'LinkedList') {
+		if (!is_a($num, 'LinkedList')) {
 			$num = new LinkedList($num);
 		}
-
-		var_dump($this->value, $num);
+		
 		$this->value += $num->value;
-		var_dump($this->value, $num);
+		
 		if ($this->value >= 1000) {
-			$this->link->value++;
+			if ($this->link === null) {
+				$this->link = new LinkedList(1);
+			} else {
+				$this->link->value++;
+			}
 			$this->value -= 1000;
 		}
 		$this->value = str_pad($this->value, 3, '0', STR_PAD_LEFT);
 
 		if (!empty($num->link)) {
-			$this->add($num->link);
+			if ($this->link === null) {
+				$this->link = $num->link;
+			} else {
+				$this->link->add($num->link);
+			}
 		}
-		/*
-		$this->value += $num;
-		$carry = 0;
-print_r([$this->value, $num]);
-		while ($this->value > 1000) { //needs fix: currently subtracting 1000 at a time. not sustainable
-			$this->value -= 1000;
-			$carry++;
-		}
-		if (!empty($this->link)) {
-			$this->link->add(floor($num/1000)+$carry);
-		} elseif ($num > 1000) {
-			die('yo');
-			$this->link = new LinkedList(floor($num/1000)+$carry);
-		}*/
 	}
 }
