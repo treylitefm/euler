@@ -8,9 +8,9 @@ $root = sqrt($n); //but too lazy atm. Will fix in future graph implementations.
 
 $graph = new Graph($n);
 
-//$graph->printGraph();
+$graph->printGraph();
 
-$paths = $graph->countTraversals2($graph->vertices[0], $n-1);
+//$paths = $graph->countTraversals2($graph->vertices[0], $n-1);
 
 print "On a $root x $root grid, there are $paths unique paths from the top left corner to the bottom left corner.\n";
 var_dump(memory_get_usage());
@@ -89,6 +89,10 @@ class Graph
 		}
 	}
 
+	/**
+	 * @todo: rewrite so that redundantly visited nodes automagically
+	 * return number of paths instead of traversing to the destination
+	 */
 	public function countTraversals($vertex, $destination) //, $moves = [], $count = 0)
 	{
 		static $moves = [];
