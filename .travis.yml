@@ -2,5 +2,6 @@ language: php
 php:
     - 5.5
 install:
-    - composer --require-dev "phpunit/phpunit=4.0.*"
-script: vendor/bin/phpunit .
+    - composer install
+script: 
+    - vendor/bin/phpunit --bootstrap bootstrap.php tests

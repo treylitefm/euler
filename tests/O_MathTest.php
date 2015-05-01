@@ -43,7 +43,7 @@ class O_MathTest extends PHPUnit_Framework_TestCase
 	public function testDivisors()
 	{
 		$divisors = O_Math::divisors(10);
-		print_r($divisors);
+		//print_r($divisors);
 		$this->assertContains(1, $divisors);
 		$this->assertContains(2, $divisors);
 		$this->assertContains(5, $divisors);
