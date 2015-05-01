@@ -1,8 +1,6 @@
 <?php
 
-include __DIR__ . '/SortFactory.php';
-
-class SorterTest extends PHPUnit_Framework_TestCase
+class SortTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * @dataProvider getUnsortedArrays

@@ -1,23 +1,4 @@
-#!/usr/bin/php
 <?php
-/**
- * https://projecteuler.net/problem=13
- */
-/*
-$problem = `curl -s https://projecteuler.net/problem=13`;
-$matches = [];
-
-preg_match_all('/\d{50}/', $problem, $matches);
-
-//print_r($matches);
-
-$list = new LinkedList(0);
-
-foreach($matches[0] as $num) {
-	$list->add($num);
-}
-print substr($list->getNum(), 0, 10) . PHP_EOL;
-*/
 
 class LinkedList
 {

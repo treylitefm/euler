@@ -1,7 +1,5 @@
 <?php
 
-include __DIR__ . '/problem13.php';
-
 class AlgoTest extends PHPUnit_Framework_Testcase
 {
 	public function testProblem13()

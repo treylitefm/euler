@@ -1,9 +1,8 @@
-#!/usr/bin/php
 <?php
 
 
 var_dump(memory_get_usage());
-$n = 16;	//note: only built for n as a perfect sq. could easily change,
+$n = 400;	//note: only built for n as a perfect sq. could easily change,
 $root = sqrt($n); //but too lazy atm. Will fix in future graph implementations.
 
 $graph = new Graph($n);
